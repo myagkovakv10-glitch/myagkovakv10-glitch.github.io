@@ -1,0 +1,535 @@
+/* ═══════════════════════════════════════════════════
+   РЕЗЮМЕ-ЛЕНДИНГ · Мягкова Кристина
+   Деловой + креативный стиль · 2025
+═══════════════════════════════════════════════════ */
+
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,400;1,600&family=Jost:wght@200;300;400;500;600&display=swap');
+
+/* ── ПЕРЕМЕННЫЕ ЦВЕТОВ ── */
+:root {
+  --bg:         #F6F4F0;        /* фон страницы — тёплый белый      */
+  --surface:    #FFFFFF;        /* фон карточек                      */
+  --ink:        #0D0D0D;        /* основной текст — почти чёрный     */
+  --ink-mid:    #1A1A1A;        /* вторичный текст — тёмно-серый     */
+  --ink-light:  #4A4540;        /* подписи, даты — средний серый     */
+  --gold:       #9B7E3A;        /* акцентный цвет — деловое золото   */
+  --gold-light: #C9A96E;        /* светлое золото                    */
+  --gold-bg:    #F5EDD9;        /* фон золотых элементов             */
+  --line:       rgba(26,23,20,0.09);
+  --shadow-sm:  0 2px 16px rgba(26,23,20,0.06);
+  --shadow-md:  0 6px 32px rgba(26,23,20,0.10);
+  --radius:     16px;
+}
+
+/* ── СБРОС И БАЗОВЫЕ СТИЛИ ── */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--bg);
+  color: var(--ink);
+  font-family: 'Jost', sans-serif;
+  font-weight: 400;
+  font-size: 15px;
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+  min-height: 100vh;
+
+  /* Тонкая сетка на фоне — создаёт деловую фактуру */
+  background-image:
+    linear-gradient(rgba(155,126,58,0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(155,126,58,0.04) 1px, transparent 1px);
+  background-size: 48px 48px;
+}
+
+/* ══════════════════════════════════════
+   HERO — верхняя секция
+══════════════════════════════════════ */
+.hero {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  gap: 40px;
+  background: var(--surface);
+  border-radius: var(--radius);
+  padding: 44px 48px;
+  margin: 32px auto;
+  max-width: 960px;
+  box-shadow: var(--shadow-md);
+  border: 1px solid var(--line);
+  position: relative;
+  overflow: hidden;
+  animation: fadeUp 0.7s ease both;
+}
+
+/* Золотая полоса сверху */
+.hero::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--gold), var(--gold-light), transparent);
+}
+
+/* Декоративный угол справа */
+.hero::after {
+  content: '';
+  position: absolute;
+  top: 0; right: 0;
+  width: 180px; height: 180px;
+  background: radial-gradient(circle at top right, rgba(155,126,58,0.07), transparent 70%);
+  pointer-events: none;
+}
+
+/* ── ФОТО 3×4 ── */
+.photo-wrap {
+  flex-shrink: 0;
+}
+
+.photo-3x4 {
+  width: 150px;           /* ← ширина фото */
+  height: 200px;          /* ← высота = ширина × 4/3 → формат 3×4 */
+  object-fit: cover;      /* обрезает без искажений */
+  object-position: top;   /* кадрирует сверху — лицо в кадре */
+  border-radius: 10px;
+  border: 2px solid var(--gold-light);
+  display: block;
+  box-shadow: var(--shadow-sm);
+}
+
+/* ── ТЕКСТ СПРАВА ОТ ФОТО ── */
+.hero-info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding-top: 4px;
+}
+
+.hero-label {
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--gold);
+}
+
+.hero-name {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 52px;
+  font-weight: 600;
+  line-height: 1.0;
+  letter-spacing: -0.02em;
+  color: var(--ink);
+}
+
+.hero-role {
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--gold);
+  letter-spacing: 0.04em;
+  padding-left: 14px;
+  border-left: 2px solid var(--gold-light);
+}
+
+/* Чипы с мета-данными */
+.hero-meta {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-top: 4px;
+}
+
+.meta-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: var(--bg);
+  border: 1px solid var(--line);
+  border-radius: 100px;
+  padding: 5px 14px;
+  font-size: 13px;
+  font-weight: 400;
+  color: var(--ink-mid);
+}
+
+.salary-chip {
+  background: var(--gold-bg);
+  border-color: rgba(155,126,58,0.25);
+  color: var(--gold);
+  font-weight: 500;
+}
+
+.meta-icon { font-size: 12px; }
+
+/* Контакты в шапке */
+.hero-contacts {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+  margin-top: 4px;
+  padding-top: 14px;
+  border-top: 1px solid var(--line);
+}
+
+.contact-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 13px;
+  font-weight: 400;
+  color: var(--ink-mid);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.contact-link:hover { color: var(--gold); }
+
+/* ── РАЗДЕЛИТЕЛЬ ── */
+.divider-line {
+  max-width: 960px;
+  margin: 0 auto 0;
+  height: 1px;
+  background: var(--line);
+}
+
+/* ══════════════════════════════════════
+   ОСНОВНАЯ СЕТКА — 2 колонки
+══════════════════════════════════════ */
+.main-grid {
+  display: grid;
+  grid-template-columns: 280px 1fr;
+  gap: 24px;
+  max-width: 960px;
+  margin: 24px auto 0;
+  padding-bottom: 48px;
+  animation: fadeUp 0.7s 0.1s ease both;
+}
+
+/* ══════════════════════════════════════
+   СЕКЦИИ
+══════════════════════════════════════ */
+.section {
+  background: var(--surface);
+  border-radius: var(--radius);
+  padding: 28px 28px;
+  box-shadow: var(--shadow-sm);
+  border: 1px solid var(--line);
+  margin-bottom: 20px;
+  transition: box-shadow 0.25s ease;
+}
+
+.section:hover {
+  box-shadow: var(--shadow-md);
+}
+
+.section-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 17px;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  color: var(--ink);
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  flex-wrap: nowrap;
+  gap: 8px;
+  line-height: 1.2;
+}
+
+.section-num {
+  font-family: 'Jost', sans-serif;
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  color: var(--gold);
+  background: var(--gold-bg);
+  padding: 3px 8px;
+  border-radius: 6px;
+}
+
+/* ══════════════════════════════════════
+   ЛЕВАЯ КОЛОНКА
+══════════════════════════════════════ */
+
+/* Компактные карточки в левой колонке */
+.col-left .section {
+  padding: 20px 22px;
+}
+
+/* Навыки */
+.skills-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.skill-item {
+  font-size: 13px;
+  font-weight: 400;
+  color: var(--ink-mid);
+  padding: 8px 12px;
+  background: var(--bg);
+  border-radius: 8px;
+  border-left: 2px solid var(--gold-light);
+  line-height: 1.4;
+  transition: background 0.2s, border-color 0.2s;
+}
+
+.skill-item:hover {
+  background: var(--gold-bg);
+  border-left-color: var(--gold);
+}
+
+/* Образование */
+.edu-item {
+  padding: 10px 0;
+  border-bottom: 1px solid var(--line);
+}
+
+.edu-item:last-child { border-bottom: none; }
+
+.edu-badge {
+  display: inline-block;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--gold);
+  background: var(--gold-bg);
+  border-radius: 6px;
+  padding: 2px 8px;
+  margin-bottom: 6px;
+}
+
+.edu-spec {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--ink);
+  margin-bottom: 2px;
+  line-height: 1.25;
+}
+
+.edu-uni {
+  font-size: 12px;
+  color: var(--ink-light);
+  line-height: 1.4;
+}
+
+/* Теги личных качеств */
+.tags-wrap {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.tag {
+  font-size: 12px;
+  font-weight: 400;
+  color: var(--ink-mid);
+  background: var(--bg);
+  border: 1px solid var(--line);
+  border-radius: 100px;
+  padding: 4px 12px;
+  transition: all 0.2s;
+}
+
+.tag:hover {
+  background: var(--gold-bg);
+  border-color: var(--gold-light);
+  color: var(--gold);
+}
+
+/* ══════════════════════════════════════
+   ПРАВАЯ КОЛОНКА
+══════════════════════════════════════ */
+
+/* Обо мне */
+.about-text {
+  font-size: 14px;
+  font-weight: 400;
+  color: var(--ink-mid);
+  line-height: 1.75;
+}
+
+/* Опыт работы */
+.job-item {
+  margin-bottom: 24px;
+  padding-bottom: 24px;
+  border-bottom: 1px solid var(--line);
+}
+
+.job-item:last-child {
+  margin-bottom: 0;
+  padding-bottom: 0;
+  border-bottom: none;
+}
+
+.job-header {
+  display: flex;
+  gap: 14px;
+  align-items: flex-start;
+  margin-bottom: 12px;
+}
+
+.job-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--gold);
+  flex-shrink: 0;
+  margin-top: 6px;
+  box-shadow: 0 0 0 3px var(--gold-bg);
+}
+
+.job-main { flex: 1; }
+
+.job-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--ink);
+  line-height: 1.2;
+  margin-bottom: 3px;
+}
+
+.job-company {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--gold);
+  margin-bottom: 2px;
+}
+
+.job-date {
+  font-size: 12px;
+  color: var(--ink-light);
+  letter-spacing: 0.04em;
+}
+
+.job-duties {
+  list-style: none;
+  padding-left: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.job-duties li {
+  font-size: 13px;
+  font-weight: 400;
+  color: var(--ink-mid);
+  position: relative;
+  line-height: 1.5;
+}
+
+.job-duties li::before {
+  content: '—';
+  position: absolute;
+  left: -18px;
+  color: var(--gold-light);
+}
+
+/* Достижения */
+.achievements-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 14px;
+}
+
+.achievement-card {
+  background: var(--bg);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 20px 16px;
+  text-align: center;
+  transition: all 0.25s ease;
+}
+
+.achievement-card:hover {
+  background: var(--gold-bg);
+  border-color: var(--gold-light);
+}
+
+.ach-number {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 36px;
+  font-weight: 700;
+  color: var(--gold);
+  line-height: 1;
+  margin-bottom: 6px;
+}
+
+.ach-label {
+  font-size: 11px;
+  font-weight: 400;
+  color: var(--ink-light);
+  line-height: 1.4;
+}
+
+/* ══════════════════════════════════════
+   ПОДВАЛ
+══════════════════════════════════════ */
+.site-footer {
+  max-width: 960px;
+  margin: 0 auto 40px;
+  text-align: center;
+}
+
+.footer-line {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--gold-light), transparent);
+  margin-bottom: 16px;
+}
+
+.site-footer p {
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  color: var(--ink-light);
+  text-transform: uppercase;
+}
+
+/* ══════════════════════════════════════
+   АНИМАЦИЯ ПОЯВЛЕНИЯ
+══════════════════════════════════════ */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(18px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ══════════════════════════════════════
+   АДАПТИВНОСТЬ — мобильные устройства
+══════════════════════════════════════ */
+@media (max-width: 768px) {
+
+  .hero {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 32px 24px;
+    margin: 16px;
+  }
+
+  .hero-role { border-left: none; border-bottom: 2px solid var(--gold-light); padding: 0 0 8px; }
+  .hero-meta, .hero-contacts { justify-content: center; }
+  .hero-name { font-size: 38px; }
+
+  .main-grid {
+    grid-template-columns: 1fr;
+    margin: 16px;
+    padding-bottom: 32px;
+  }
+
+  .achievements-grid { grid-template-columns: repeat(3, 1fr); gap: 8px; }
+}
+
+@media (max-width: 480px) {
+  .achievements-grid { grid-template-columns: 1fr; }
+  .hero-name { font-size: 32px; }
+}
